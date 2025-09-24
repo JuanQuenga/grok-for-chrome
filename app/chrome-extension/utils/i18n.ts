@@ -40,6 +40,15 @@ const fallbackMessages: Record<string, string> = {
   connectionPortLabel: 'Connection Port',
   refreshStatusButton: 'Refresh Status',
   copyConfigButton: 'Copy Configuration',
+  copyCommandButton: 'Copy',
+  commandCopiedLabel: 'Copied!',
+  commandCopyFailedLabel: 'Copy failed',
+  nativeServerErrorTitle: 'Native bridge reported an error',
+  nativeServerErrorPermissionHint:
+    'macOS blocked the server from opening a local port. Grant the process network permissions or try running the register command with sudo.',
+  nativeServerErrorPortInUseHint:
+    'The selected port is already in use. Try another port (e.g. 56889) and reconnect.',
+  nativeServerErrorGenericHint: 'Check the native host logs and reinstall if the issue persists.',
 
   // Action buttons
   retryButton: 'Retry',
@@ -152,6 +161,16 @@ const fallbackMessages: Record<string, string> = {
   infoNotification: 'Information',
   configCopiedNotification: 'Configuration copied to clipboard',
   dataClearedNotification: 'Data cleared successfully',
+  nativeRegistrationTitle: 'Register Native Bridge',
+  nativeRegistrationDescription:
+    'Install the native messaging bridge once on this device to enable the extension connection.',
+  nativeRegistrationStep1: 'Run this command in a terminal:',
+  nativeRegistrationStep2: 'If you work inside this repo, you can use the workspace shortcut:',
+  nativeRegistrationCommandLabel: 'Default install (npm/npx)',
+  nativeRegistrationCommandHint: 'Requires Node.js 18+ and can be rerun after CLI updates.',
+  nativeRegistrationRepoLabel: 'Monorepo shortcut',
+  nativeRegistrationRepoHint: 'Runs the same registration using pnpm from this workspace.',
+  nativeRegistrationDocsLink: 'View installation guide',
 
   // Units
   bytesUnit: 'bytes',

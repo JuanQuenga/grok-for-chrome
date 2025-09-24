@@ -6,12 +6,12 @@
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green.svg)](https://developer.chrome.com/docs/extensions/)
 [![Release](https://img.shields.io/github/v/release/hangwin/mcp-chrome.svg)](https://img.shields.io/github/v/release/hangwin/mcp-chrome.svg)
 
-
 > 🌟 **Turn your Chrome browser into your intelligent assistant** - Let AI take control of your browser, transforming it into a powerful AI-controlled automation tool.
 
 **📖 Documentation**: [English](README.md) | [中文](README_zh.md)
 
 > The project is still in its early stages and is under intensive development. More features, stability improvements, and other enhancements will follow.
+
 ---
 
 ## 🎯 What is Chrome MCP Server?
@@ -54,89 +54,16 @@ Chrome MCP Server is a Chrome extension-based **Model Context Protocol (MCP) ser
 
 Download link: https://github.com/hangwin/mcp-chrome/releases
 
-2. **Install mcp-chrome-bridge globally**
-
-npm
-
-```bash
-npm install -g mcp-chrome-bridge
-```
-
-pnpm
-
-```bash
-# Method 1: Enable scripts globally (recommended)
-pnpm config set enable-pre-post-scripts true
-pnpm install -g mcp-chrome-bridge
-
-# Method 2: Manual registration (if postinstall doesn't run)
-pnpm install -g mcp-chrome-bridge
-mcp-chrome-bridge register
-```
-
-> Note: pnpm v7+ disables postinstall scripts by default for security. The `enable-pre-post-scripts` setting controls whether pre/post install scripts run. If automatic registration fails, use the manual registration command above.
-
-3. **Load Chrome Extension**
+2. **Load Chrome Extension**
    - Open Chrome and go to `chrome://extensions/`
    - Enable "Developer mode"
    - Click "Load unpacked" and select `your/dowloaded/extension/folder`
    - Click the extension icon to open the plugin, then click connect to see the MCP configuration
      <img width="475" alt="Screenshot 2025-06-09 15 52 06" src="https://github.com/user-attachments/assets/241e57b8-c55f-41a4-9188-0367293dc5bc" />
 
-### Usage with MCP Protocol Clients
+### Usage
 
-#### Using Streamable HTTP Connection (👍🏻 Recommended)
-
-Add the following configuration to your MCP client configuration (using CherryStudio as an example):
-
-> Streamable HTTP connection method is recommended
-
-```json
-{
-  "mcpServers": {
-    "chrome-mcp-server": {
-      "type": "streamableHttp",
-      "url": "http://127.0.0.1:12306/mcp"
-    }
-  }
-}
-```
-
-#### Using STDIO Connection (Alternative)
-
-If your client only supports stdio connection method, please use the following approach:
-
-1. First, check the installation location of the npm package you just installed
-
-```sh
-# npm check method
-npm list -g mcp-chrome-bridge
-# pnpm check method
-pnpm list -g mcp-chrome-bridge
-```
-
-Assuming the command above outputs the path: /Users/xxx/Library/pnpm/global/5
-Then your final path would be: /Users/xxx/Library/pnpm/global/5/node_modules/mcp-chrome-bridge/dist/mcp/mcp-server-stdio.js
-
-2. Replace the configuration below with the final path you just obtained
-
-```json
-{
-  "mcpServers": {
-    "chrome-mcp-stdio": {
-      "command": "npx",
-      "args": [
-        "node",
-        "/Users/xxx/Library/pnpm/global/5/node_modules/mcp-chrome-bridge/dist/mcp/mcp-server-stdio.js"
-      ]
-    }
-  }
-}
-```
-
-eg：config in augment:
-
-<img width="494" alt="截屏2025-06-22 22 11 25" src="https://github.com/user-attachments/assets/48eefc0c-a257-4d3b-8bbe-d7ff716de2bf" />
+The extension now runs entirely inside Chrome. Configure your Grok API key in the sidepanel and start chatting—external MCP clients and native messaging bridges are no longer required.
 
 ## 🛠️ Available Tools
 
@@ -217,7 +144,6 @@ prompt: [modify-web-prompt](prompt/modify-web.md)
 Instruction: Help me modify the current page's style and remove advertisements.
 https://youtu.be/twI6apRKHsk
 
-
 https://github.com/user-attachments/assets/69cb561c-2e1e-4665-9411-4a3185f9643e
 
 ### AI automatically captures network requests for you
@@ -226,7 +152,6 @@ query: I want to know what the search API for Xiaohongshu is and what the respon
 
 https://youtu.be/1hHKr7XKqnQ
 
-
 https://github.com/user-attachments/assets/063f44ae-1754-46b6-b141-5988c86e4d96
 
 ### AI helps analyze your browsing history
@@ -234,7 +159,6 @@ https://github.com/user-attachments/assets/063f44ae-1754-46b6-b141-5988c86e4d96
 query: Analyze my browsing history from the past month
 
 https://youtu.be/jf2UZfrR2Vk
-
 
 https://github.com/user-attachments/assets/e7a35118-e50e-4b1c-a790-0878aa2505ab
 
@@ -250,14 +174,12 @@ https://github.com/user-attachments/assets/08aa86aa-7706-4df2-b400-576e2c7fcc7f
 query: Take a screenshot of Hugging Face's homepage
 https://youtu.be/7ycK6iksWi4
 
-
 https://github.com/user-attachments/assets/b081e41b-6309-40d6-885b-0da01691b12e
 
 ### AI automatically takes screenshots for you (element screenshots)
 
 query: Capture the icon from Hugging Face's homepage
 https://youtu.be/ev8VivANIrk
-
 
 https://github.com/user-attachments/assets/25657076-b84b-4459-a72f-90f896f06364
 
@@ -267,7 +189,6 @@ query: Add the current page to bookmarks and put it in an appropriate folder
 
 https://youtu.be/R_83arKmFTo
 
-
 https://github.com/user-attachments/assets/73c1ea26-65fb-4b5e-b537-e32fa9bcfa52
 
 ### Automatically close web pages
@@ -275,7 +196,6 @@ https://github.com/user-attachments/assets/73c1ea26-65fb-4b5e-b537-e32fa9bcfa52
 query: Close all shadcn-related web pages
 
 https://youtu.be/2wzUT6eNVg4
-
 
 https://github.com/user-attachments/assets/ff160f48-58e0-4c76-a6b0-c4e1f91370c8
 
@@ -305,3 +225,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Architecture Design](docs/ARCHITECTURE.md) - Detailed technical architecture documentation
 - [TOOLS API](docs/TOOLS.md) - Complete tool API documentation
 - [Troubleshooting](docs/TROUBLESHOOTING.md) - Common issue solutions
+
+# grok-for-chrome

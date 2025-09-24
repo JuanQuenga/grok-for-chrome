@@ -26,6 +26,12 @@ export const TOOL_NAMES = {
     SEND_COMMAND_TO_INJECT_SCRIPT: 'chrome_send_command_to_inject_script',
     CONSOLE: 'chrome_console',
   },
+  TASK: {
+    TODO_CREATE: 'todo_create',
+    TODO_LIST: 'todo_list',
+    TODO_UPDATE: 'todo_update',
+    TODO_COMPLETE: 'todo_complete',
+  },
 };
 
 export const TOOL_SCHEMAS: Tool[] = [
@@ -532,6 +538,101 @@ export const TOOL_SCHEMAS: Tool[] = [
         },
       },
       required: [],
+    },
+  },
+  {
+    name: TOOL_NAMES.TASK.TODO_CREATE,
+    description:
+      'Create a new task in the TODO list for planning and tracking multi-step activities',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        title: {
+          type: 'string',
+          description: 'Title/description of the task to create',
+        },
+        priority: {
+          type: 'string',
+          enum: ['low', 'medium', 'high', 'urgent'],
+          description: 'Priority level of the task (default: medium)',
+        },
+        depends_on: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Array of task IDs this task depends on (optional)',
+        },
+      },
+      required: ['title'],
+    },
+  },
+  {
+    name: TOOL_NAMES.TASK.TODO_LIST,
+    description: 'List all current TODO items with their status and details',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        status: {
+          type: 'string',
+          enum: ['pending', 'in_progress', 'completed', 'cancelled'],
+          description: 'Filter tasks by status (optional)',
+        },
+        priority: {
+          type: 'string',
+          enum: ['low', 'medium', 'high', 'urgent'],
+          description: 'Filter tasks by priority (optional)',
+        },
+      },
+      required: [],
+    },
+  },
+  {
+    name: TOOL_NAMES.TASK.TODO_UPDATE,
+    description: 'Update an existing TODO task',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string',
+          description: 'ID of the task to update',
+        },
+        title: {
+          type: 'string',
+          description: 'New title for the task (optional)',
+        },
+        status: {
+          type: 'string',
+          enum: ['pending', 'in_progress', 'completed', 'cancelled'],
+          description: 'New status for the task (optional)',
+        },
+        priority: {
+          type: 'string',
+          enum: ['low', 'medium', 'high', 'urgent'],
+          description: 'New priority for the task (optional)',
+        },
+        notes: {
+          type: 'string',
+          description: 'Additional notes for the task (optional)',
+        },
+      },
+      required: ['id'],
+    },
+  },
+  {
+    name: TOOL_NAMES.TASK.TODO_COMPLETE,
+    description: 'Mark a TODO task as completed',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string',
+          description: 'ID of the task to mark as completed',
+        },
+        notes: {
+          type: 'string',
+          description: 'Completion notes (optional)',
+        },
+      },
+      required: ['id'],
     },
   },
 ];

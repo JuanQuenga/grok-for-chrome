@@ -1,8 +1,15 @@
 import { createErrorResponse } from '@/common/tool-handler';
 import { ERROR_MESSAGES } from '@/common/constants';
 import * as browserTools from './browser';
+import { todoCreateTool, todoListTool, todoUpdateTool, todoCompleteTool } from './todo';
 
-const tools = { ...browserTools };
+const tools = {
+  ...browserTools,
+  todoCreateTool,
+  todoListTool,
+  todoUpdateTool,
+  todoCompleteTool,
+};
 const toolsMap = new Map(Object.values(tools).map((tool) => [tool.name, tool]));
 
 /**

@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "chrome-mcp-server",
+    "message": "Grok",
     "description": "Extension name"
   },
   "extensionDescription": {
@@ -100,6 +100,34 @@
   "copyConfigButton": {
     "message": "Copy Configuration",
     "description": "Copy configuration button text"
+  },
+  "copyCommandButton": {
+    "message": "Copy",
+    "description": "Copy command button text"
+  },
+  "commandCopiedLabel": {
+    "message": "Copied!",
+    "description": "Command copied feedback"
+  },
+  "commandCopyFailedLabel": {
+    "message": "Copy failed",
+    "description": "Command copy failure feedback"
+  },
+  "nativeServerErrorTitle": {
+    "message": "Native bridge reported an error",
+    "description": "Title shown when native server fails to start"
+  },
+  "nativeServerErrorPermissionHint": {
+    "message": "macOS blocked the server from opening a local port. Grant the process network permissions or try running the register command with sudo.",
+    "description": "Hint displayed when permission errors occur"
+  },
+  "nativeServerErrorPortInUseHint": {
+    "message": "The selected port is already in use. Try another port (e.g. 56889) and reconnect.",
+    "description": "Hint displayed when port collisions happen"
+  },
+  "nativeServerErrorGenericHint": {
+    "message": "Check the native host logs and reinstall if the issue persists.",
+    "description": "Fallback hint for generic native server errors"
   },
   "retryButton": {
     "message": "Retry",
@@ -415,6 +443,42 @@
     "message": "Configuration copied to clipboard",
     "description": "Configuration copied success message"
   },
+  "nativeRegistrationTitle": {
+    "message": "Register Native Bridge",
+    "description": "Title for native registration helper"
+  },
+  "nativeRegistrationDescription": {
+    "message": "Install the native messaging bridge once on this device to enable the extension connection.",
+    "description": "Description for native registration helper"
+  },
+  "nativeRegistrationStep1": {
+    "message": "Run this command in a terminal:",
+    "description": "First instruction for native registration"
+  },
+  "nativeRegistrationStep2": {
+    "message": "If you work inside this repo, you can use the workspace shortcut:",
+    "description": "Second instruction for native registration"
+  },
+  "nativeRegistrationCommandLabel": {
+    "message": "Default install (npm/npx)",
+    "description": "Label for default registration command"
+  },
+  "nativeRegistrationCommandHint": {
+    "message": "Requires Node.js 18+ and can be rerun after CLI updates.",
+    "description": "Hint for default registration command"
+  },
+  "nativeRegistrationRepoLabel": {
+    "message": "Monorepo shortcut",
+    "description": "Label for workspace registration command"
+  },
+  "nativeRegistrationRepoHint": {
+    "message": "Runs the same registration using pnpm from this workspace.",
+    "description": "Hint for workspace registration command"
+  },
+  "nativeRegistrationDocsLink": {
+    "message": "View installation guide",
+    "description": "Link text to native registration docs"
+  },
   "dataClearedNotification": {
     "message": "Data cleared successfully",
     "description": "Data cleared success message"
@@ -442,5 +506,13 @@
   "pagesUnit": {
     "message": "pages",
     "description": "Pages count unit"
+  },
+  "openPopupCommand": {
+    "message": "Open Grok popup",
+    "description": "Keyboard shortcut to open the extension popup"
+  },
+  "openSidepanelCommand": {
+    "message": "Open Grok sidepanel",
+    "description": "Keyboard shortcut to open the extension sidepanel"
   }
 }

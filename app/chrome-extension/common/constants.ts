@@ -3,17 +3,6 @@
  * Centralized configuration values and magic constants
  */
 
-// Native Host Configuration
-export const NATIVE_HOST = {
-  NAME: 'com.chromemcp.nativehost',
-  DEFAULT_PORT: 12306,
-} as const;
-
-// Chrome Extension Icons
-export const ICONS = {
-  NOTIFICATION: 'icon/48.png',
-} as const;
-
 // Timeouts and Delays (in milliseconds)
 export const TIMEOUTS = {
   DEFAULT_WAIT: 1000,
@@ -36,10 +25,6 @@ export const LIMITS = {
 
 // Error Messages
 export const ERROR_MESSAGES = {
-  NATIVE_CONNECTION_FAILED: 'Failed to connect to native host',
-  NATIVE_DISCONNECTED: 'Native connection disconnected',
-  SERVER_STATUS_LOAD_FAILED: 'Failed to load server status',
-  SERVER_STATUS_SAVE_FAILED: 'Failed to save server status',
   TOOL_EXECUTION_FAILED: 'Tool execution failed',
   INVALID_PARAMETERS: 'Invalid parameters provided',
   PERMISSION_DENIED: 'Permission denied',
@@ -52,8 +37,6 @@ export const ERROR_MESSAGES = {
 export const SUCCESS_MESSAGES = {
   TOOL_EXECUTED: 'Tool executed successfully',
   CONNECTION_ESTABLISHED: 'Connection established',
-  SERVER_STARTED: 'Server started successfully',
-  SERVER_STOPPED: 'Server stopped successfully',
 } as const;
 
 // File Extensions and MIME Types
@@ -98,16 +81,9 @@ export const SEMANTIC_CONFIG = {
 
 // Storage Keys
 export const STORAGE_KEYS = {
-  SERVER_STATUS: 'serverStatus',
   SEMANTIC_MODEL: 'selectedModel',
   USER_PREFERENCES: 'userPreferences',
   VECTOR_INDEX: 'vectorIndex',
-} as const;
-
-// Notification Configuration
-export const NOTIFICATIONS = {
-  PRIORITY: 2,
-  TYPE: 'basic' as const,
 } as const;
 
 export enum ExecutionWorld {

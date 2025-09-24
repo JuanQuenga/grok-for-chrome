@@ -16,7 +16,7 @@ import { ModelCacheManager } from './model-cache-manager';
 async function getCachedModelData(modelUrl: string): Promise<ArrayBuffer> {
   const cacheManager = ModelCacheManager.getInstance();
 
-  // 1. 尝试从缓存获取数据
+  // 1. Try to get data from cache
   const cachedData = await cacheManager.getCachedModelData(modelUrl);
   if (cachedData) {
     return cachedData;
@@ -25,14 +25,14 @@ async function getCachedModelData(modelUrl: string): Promise<ArrayBuffer> {
   console.log('Model not found in cache or expired. Fetching from network...');
 
   try {
-    // 2. 从网络获取数据
+    // 2. Get data from network
     const response = await fetch(modelUrl);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch model: ${response.status} ${response.statusText}`);
     }
 
-    // 3. 获取数据并存储到缓存
+    // 3. Get data and store in cache
     const arrayBuffer = await response.arrayBuffer();
     await cacheManager.storeModelData(modelUrl, arrayBuffer);
 
@@ -43,7 +43,7 @@ async function getCachedModelData(modelUrl: string): Promise<ArrayBuffer> {
     return arrayBuffer;
   } catch (error) {
     console.error(`Error fetching or caching model:`, error);
-    // 如果获取失败，清理可能不完整的缓存条目
+    // If fetching fails, clean up potentially incomplete cache entries
     await cacheManager.deleteCacheEntry(modelUrl);
     throw error;
   }
@@ -566,7 +566,7 @@ export class SemanticSimilarityEngineProxy {
    * Send message to offscreen document with retry mechanism and auto-reinitialization
    */
   private async sendMessageToOffscreen(message: any, maxRetries: number = 3): Promise<any> {
-    // 确保offscreen document存在
+    // Ensure offscreen document exists
     await this.offscreenManager.ensureOffscreenDocument();
 
     let lastError: Error | null = null;
@@ -987,7 +987,7 @@ export class SemanticSimilarityEngine {
   private _setupWorker(): void {
     console.log('SemanticSimilarityEngine: Setting up worker...');
 
-    // 方式1: Chrome extension URL (推荐，生产环境最可靠)
+    // Method 1: Chrome extension URL (recommended, most reliable in production)
     try {
       const workerUrl = chrome.runtime.getURL('workers/similarity.worker.js');
       console.log(`SemanticSimilarityEngine: Trying chrome.runtime.getURL ${workerUrl}`);
@@ -1016,7 +1016,7 @@ export class SemanticSimilarityEngine {
 
       this.pendingMessages.delete(id);
 
-      // 更新 Worker 统计信息
+      // Update Worker statistics
       if (stats) {
         this.performanceStats.workerStats = stats;
       }
@@ -1045,7 +1045,7 @@ export class SemanticSimilarityEngine {
       console.error('Event Lineno:', error.lineno);
       console.error('Event Colno:', error.colno);
       if (error.error) {
-        // 检查 event.error 是否存在
+        // Check if event.error exists
         console.error('Actual Error Name:', error.error.name);
         console.error('Actual Error Message:', error.error.message);
         console.error('Actual Error Stack:', error.error.stack);
@@ -1080,7 +1080,7 @@ export class SemanticSimilarityEngine {
   }
 
   /**
-   * 带进度回调的初始化方法
+   * Initialization method with progress callback
    */
   public async initializeWithProgress(
     onProgress?: (progress: { status: string; progress: number; message?: string }) => void,

@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "chrome-mcp-server",
+    "message": "Grok",
     "description": "扩展名称"
   },
   "extensionDescription": {
@@ -100,6 +100,34 @@
   "copyConfigButton": {
     "message": "复制配置",
     "description": "复制配置按钮文本"
+  },
+  "copyCommandButton": {
+    "message": "复制",
+    "description": "复制命令按钮文本"
+  },
+  "commandCopiedLabel": {
+    "message": "已复制!",
+    "description": "命令复制成功提示"
+  },
+  "commandCopyFailedLabel": {
+    "message": "复制失败",
+    "description": "命令复制失败提示"
+  },
+  "nativeServerErrorTitle": {
+    "message": "原生桥接服务启动出错",
+    "description": "原生服务器失败时的标题"
+  },
+  "nativeServerErrorPermissionHint": {
+    "message": "macOS 拒绝了本地端口监听。请授予网络权限，或使用 sudo 重新运行注册命令。",
+    "description": "权限错误提示"
+  },
+  "nativeServerErrorPortInUseHint": {
+    "message": "当前端口已被占用。请尝试其它端口（例如 56889）后重新连接。",
+    "description": "端口占用提示"
+  },
+  "nativeServerErrorGenericHint": {
+    "message": "查看原生主机日志，如问题持续请重新安装。",
+    "description": "通用错误提示"
   },
   "retryButton": {
     "message": "重试",
@@ -415,6 +443,42 @@
     "message": "配置已复制到剪贴板",
     "description": "配置复制成功消息"
   },
+  "nativeRegistrationTitle": {
+    "message": "注册原生桥接服务",
+    "description": "原生注册帮助标题"
+  },
+  "nativeRegistrationDescription": {
+    "message": "扩展需要在此设备上注册一次原生消息桥以建立连接。",
+    "description": "原生注册帮助描述"
+  },
+  "nativeRegistrationStep1": {
+    "message": "在终端中运行以下命令：",
+    "description": "原生注册步骤一"
+  },
+  "nativeRegistrationStep2": {
+    "message": "如果你在本仓库中开发，可以使用工作区快捷命令：",
+    "description": "原生注册步骤二"
+  },
+  "nativeRegistrationCommandLabel": {
+    "message": "默认安装（npm/npx）",
+    "description": "默认注册命令标签"
+  },
+  "nativeRegistrationCommandHint": {
+    "message": "需要 Node.js 18+，更新 CLI 后可重新运行。",
+    "description": "默认注册命令提示"
+  },
+  "nativeRegistrationRepoLabel": {
+    "message": "Monorepo 快捷方式",
+    "description": "工作区注册命令标签"
+  },
+  "nativeRegistrationRepoHint": {
+    "message": "通过 pnpm 在当前工作区执行同样的注册。",
+    "description": "工作区注册命令提示"
+  },
+  "nativeRegistrationDocsLink": {
+    "message": "查看安装指南",
+    "description": "原生注册文档链接文本"
+  },
   "dataClearedNotification": {
     "message": "数据清空成功",
     "description": "数据清空成功消息"
@@ -442,5 +506,13 @@
   "pagesUnit": {
     "message": "页",
     "description": "页面计数单位"
+  },
+  "openPopupCommand": {
+    "message": "打开 Grok 弹出窗口",
+    "description": "打开扩展弹出窗口的键盘快捷键"
+  },
+  "openSidepanelCommand": {
+    "message": "打开 Grok 侧边栏",
+    "description": "打开扩展侧边栏的键盘快捷键"
   }
 }

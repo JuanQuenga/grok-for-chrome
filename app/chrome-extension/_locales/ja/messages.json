@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Chrome MCPサーバー"
+    "message": "Grok"
   },
   "extensionDescription": {
     "message": "自身のChromeブラウザの機能を外部に公開します"
@@ -76,6 +76,27 @@
   },
   "copyConfigButton": {
     "message": "設定をコピー"
+  },
+  "copyCommandButton": {
+    "message": "コピー"
+  },
+  "commandCopiedLabel": {
+    "message": "コピーしました!"
+  },
+  "commandCopyFailedLabel": {
+    "message": "コピーできませんでした"
+  },
+  "nativeServerErrorTitle": {
+    "message": "ネイティブブリッジでエラーが発生しました"
+  },
+  "nativeServerErrorPermissionHint": {
+    "message": "macOS がローカルポートの待ち受けを拒否しました。プロセスにネットワーク許可を与えるか、sudo で登録コマンドを再実行してください。"
+  },
+  "nativeServerErrorPortInUseHint": {
+    "message": "選択したポートは使用中です。別のポート（例: 56889）を試して再接続してください。"
+  },
+  "nativeServerErrorGenericHint": {
+    "message": "ネイティブホストのログを確認し、問題が続く場合は再インストールしてください。"
   },
   "retryButton": {
     "message": "再試行"
@@ -314,6 +335,33 @@
   "configCopiedNotification": {
     "message": "設定がクリップボードにコピーされました"
   },
+  "nativeRegistrationTitle": {
+    "message": "ネイティブブリッジを登録"
+  },
+  "nativeRegistrationDescription": {
+    "message": "この拡張機能は各マシンで一度ネイティブメッセージブリッジを登録する必要があります。"
+  },
+  "nativeRegistrationStep1": {
+    "message": "ターミナルで次のコマンドを実行してください:"
+  },
+  "nativeRegistrationStep2": {
+    "message": "リポジトリで開発している場合はワークスペース向けショートカットを使用してください:"
+  },
+  "nativeRegistrationCommandLabel": {
+    "message": "標準インストール (npm/npx)"
+  },
+  "nativeRegistrationCommandHint": {
+    "message": "Node.js 18+ が必要です。CLI を更新した後は再度実行してください。"
+  },
+  "nativeRegistrationRepoLabel": {
+    "message": "Monorepo ショートカット"
+  },
+  "nativeRegistrationRepoHint": {
+    "message": "このワークスペースから pnpm で同じ登録を実行します。"
+  },
+  "nativeRegistrationDocsLink": {
+    "message": "インストールガイドを開く"
+  },
   "dataClearedNotification": {
     "message": "データが正常にクリアされました"
   },
@@ -334,5 +382,11 @@
   },
   "pagesUnit": {
     "message": "ページ"
+  },
+  "openPopupCommand": {
+    "message": "Grokポップアップを開く"
+  },
+  "openSidepanelCommand": {
+    "message": "Grokサイドパネルを開く"
   }
 }

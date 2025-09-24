@@ -10,7 +10,7 @@ const CHROME_EXTENSION_KEY = process.env.CHROME_EXTENSION_KEY;
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
-  modules: ['@wxt-dev/module-vue'],
+  modules: ['@wxt-dev/module-vue', '@wxt-dev/module-react'],
   runner: {
     // 方案1: 禁用自动启动（推荐）
     disabled: true,
@@ -32,7 +32,6 @@ export default defineConfig({
     name: '__MSG_extensionName__',
     description: '__MSG_extensionDescription__',
     permissions: [
-      'nativeMessaging',
       'tabs',
       'activeTab',
       'scripting',
@@ -43,8 +42,16 @@ export default defineConfig({
       'bookmarks',
       'offscreen',
       'storage',
+      'sidePanel',
+      'commands',
     ],
     host_permissions: ['<all_urls>'],
+    side_panel: {
+      default_path: 'sidepanel/index.html',
+    },
+    action: {
+      default_popup: 'popup/index.html',
+    },
     web_accessible_resources: [
       {
         resources: [
@@ -63,6 +70,22 @@ export default defineConfig({
     content_security_policy: {
       extension_pages: "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';",
     },
+    commands: {
+      open_sidepanel: {
+        suggested_key: {
+          default: 'Ctrl+Shift+G',
+          mac: 'Command+Shift+G',
+        },
+        description: '__MSG_openSidepanelCommand__',
+      },
+      open_popup: {
+        suggested_key: {
+          default: 'Ctrl+G',
+          mac: 'Command+G',
+        },
+        description: '__MSG_openPopupCommand__',
+      },
+    },
   },
   vite: (env) => ({
     plugins: [
@@ -79,6 +102,10 @@ export default defineConfig({
           {
             src: '_locales/**/*',
             dest: '_locales',
+          },
+          {
+            src: '../../prompt/*.md',
+            dest: 'prompt',
           },
         ],
       }) as any,

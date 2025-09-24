@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "chrome-mcp-server",
+    "message": "Grok",
     "description": "Erweiterungsname"
   },
   "extensionDescription": {
@@ -100,6 +100,34 @@
   "copyConfigButton": {
     "message": "Konfiguration kopieren",
     "description": "Konfiguration kopieren Schaltflächentext"
+  },
+  "copyCommandButton": {
+    "message": "Kopieren",
+    "description": "Schaltflächentext zum Kopieren eines Befehls"
+  },
+  "commandCopiedLabel": {
+    "message": "Kopiert!",
+    "description": "Rückmeldung nach erfolgreichem Kopieren eines Befehls"
+  },
+  "commandCopyFailedLabel": {
+    "message": "Kopieren fehlgeschlagen",
+    "description": "Hinweis, dass das Kopieren eines Befehls fehlgeschlagen ist"
+  },
+  "nativeServerErrorTitle": {
+    "message": "Native Bridge meldet einen Fehler",
+    "description": "Titel, wenn der Native Server nicht startet"
+  },
+  "nativeServerErrorPermissionHint": {
+    "message": "macOS hat das Öffnen des lokalen Ports blockiert. Erteile dem Prozess Netzberechtigungen oder führe den Registrierungsbefehl mit sudo aus.",
+    "description": "Hinweis bei Berechtigungsproblemen"
+  },
+  "nativeServerErrorPortInUseHint": {
+    "message": "Der ausgewählte Port wird bereits verwendet. Versuche einen anderen Port (z. B. 56889) und verbinde dich erneut.",
+    "description": "Hinweis bei Portkollisionen"
+  },
+  "nativeServerErrorGenericHint": {
+    "message": "Prüfe die Native-Host-Protokolle und installiere neu, falls das Problem bestehen bleibt.",
+    "description": "Allgemeiner Hinweis für Native-Server-Fehler"
   },
   "retryButton": {
     "message": "Wiederholen",
@@ -415,6 +443,42 @@
     "message": "Konfiguration in Zwischenablage kopiert",
     "description": "Konfiguration kopiert Erfolgsmeldung"
   },
+  "nativeRegistrationTitle": {
+    "message": "Native Bridge registrieren",
+    "description": "Titel des Hilfebereichs zur Registrierung"
+  },
+  "nativeRegistrationDescription": {
+    "message": "Die Erweiterung benötigt einmal pro Gerät eine registrierte Native-Messaging-Bridge.",
+    "description": "Beschreibung des Hilfebereichs zur Registrierung"
+  },
+  "nativeRegistrationStep1": {
+    "message": "Führe diesen Befehl im Terminal aus:",
+    "description": "Erster Schritt zur Registrierung"
+  },
+  "nativeRegistrationStep2": {
+    "message": "Wenn du im Repository arbeitest, nutze die Workspace-Abkürzung:",
+    "description": "Zweiter Schritt zur Registrierung"
+  },
+  "nativeRegistrationCommandLabel": {
+    "message": "Standardinstallation (npm/npx)",
+    "description": "Label für den Standardregistrierungsbefehl"
+  },
+  "nativeRegistrationCommandHint": {
+    "message": "Benötigt Node.js 18+ und kann nach CLI-Updates erneut ausgeführt werden.",
+    "description": "Hinweis zum Standardregistrierungsbefehl"
+  },
+  "nativeRegistrationRepoLabel": {
+    "message": "Monorepo-Kurzbefehl",
+    "description": "Label für den Workspace-Registrierungsbefehl"
+  },
+  "nativeRegistrationRepoHint": {
+    "message": "Startet dieselbe Registrierung mit pnpm direkt aus diesem Workspace.",
+    "description": "Hinweis zum Workspace-Registrierungsbefehl"
+  },
+  "nativeRegistrationDocsLink": {
+    "message": "Installationsanleitung öffnen",
+    "description": "Linktext zur Installationsanleitung"
+  },
   "dataClearedNotification": {
     "message": "Daten erfolgreich gelöscht",
     "description": "Daten gelöscht Erfolgsmeldung"
@@ -442,5 +506,13 @@
   "pagesUnit": {
     "message": "Seiten",
     "description": "Seiten Zähleinheit"
+  },
+  "openPopupCommand": {
+    "message": "Grok-Popup öffnen",
+    "description": "Tastenkürzel zum Öffnen des Erweiterungs-Popups"
+  },
+  "openSidepanelCommand": {
+    "message": "Grok-Seitenleiste öffnen",
+    "description": "Tastenkürzel zum Öffnen der Erweiterungs-Seitenleiste"
   }
 }

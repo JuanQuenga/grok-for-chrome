@@ -52,90 +52,16 @@ Chrome MCP Server 是一个基于chrome插件的 **模型上下文协议 (MCP) �
 
 下载地址：https://github.com/hangwin/mcp-chrome/releases
 
-2. **全局安装mcp-chrome-bridge**
-
-npm
-
-```bash
-npm install -g mcp-chrome-bridge
-```
-
-pnpm
-
-```bash
-# 方法1：全局启用脚本（推荐）
-pnpm config set enable-pre-post-scripts true
-pnpm install -g mcp-chrome-bridge
-
-# 方法2：如果 postinstall 没有运行，手动注册
-pnpm install -g mcp-chrome-bridge
-mcp-chrome-bridge register
-```
-
-> 注意：pnpm v7+ 默认禁用 postinstall 脚本以提高安全性。`enable-pre-post-scripts` 设置控制是否运行 pre/post 安装脚本。如果自动注册失败，请使用上述手动注册命令。
-
-3. **加载 Chrome 扩展**
+2. **加载 Chrome 扩展**
    - 打开 Chrome 并访问 `chrome://extensions/`
    - 启用"开发者模式"
    - 点击"加载已解压的扩展程序"，选择 `your/dowloaded/extension/folder`
    - 点击插件图标打开插件，点击连接即可看到mcp的配置
-     
    <img width="475" alt="截屏2025-06-09 15 52 06" src="https://github.com/user-attachments/assets/241e57b8-c55f-41a4-9188-0367293dc5bc" />
 
-### 在支持MCP协议的客户端中使用
+### 使用说明
 
-#### 使用streamable http的方式连接（👍🏻推荐）
-
-将以下配置添加到客户端的 MCP 配置中以cherryStudio为例：
-
-> 推荐用streamable http的连接方式
-
-```json
-{
-  "mcpServers": {
-    "chrome-mcp-server": {
-      "type": "streamableHttp",
-      "url": "http://127.0.0.1:12306/mcp"
-    }
-  }
-}
-```
-
-#### 使用stdio的方式连接（备选）
-
-假设你的客户端仅支持stdio的连接方式，那么请使用下面的方法：
-
-1. 先查看你刚刚安装的npm包的安装位置
-
-```sh
-# npm 查看方式
-npm list -g mcp-chrome-bridge
-# pnpm 查看方式
-pnpm list -g mcp-chrome-bridge
-```
-
-假设上面的命令输出的路径是：/Users/xxx/Library/pnpm/global/5
-那么你的最终路径就是：/Users/xxx/Library/pnpm/global/5/node_modules/mcp-chrome-bridge/dist/mcp/mcp-server-stdio.js
-
-2. 把下面的配置替换成你刚刚得到的最终路径
-
-```json
-{
-  "mcpServers": {
-    "chrome-mcp-stdio": {
-      "command": "npx",
-      "args": [
-        "node",
-        "/Users/xxx/Library/pnpm/global/5/node_modules/mcp-chrome-bridge/dist/mcp/mcp-server-stdio.js"
-      ]
-    }
-  }
-}
-```
-
-比如：在augment中的配置如下：
-
-<img width="494" alt="截屏2025-06-22 22 11 25" src="https://github.com/user-attachments/assets/07c0b090-622b-433d-be70-44e8cb8980a5" />
+现在扩展完全在 Chrome 内运行。只需在侧边栏配置 Grok API Key 并开始聊天，无需额外的 MCP 客户端或原生消息桥接程序。
 
 ## 🛠️ 可用工具
 
@@ -200,7 +126,6 @@ prompt: [excalidraw-prompt](prompt/excalidraw-prompt.md)
 指令：帮我总结当前页面内容，然后画个图帮我理解
 https://www.youtube.com/watch?v=3fBPdUBWVz0
 
-
 https://github.com/user-attachments/assets/f14f79a6-9390-4821-8296-06d020bcfc07
 
 ### ai先分析图片的内容元素，然后再自动控制excalidraw把图片模仿出来
@@ -217,14 +142,12 @@ prompt: [modify-web-prompt](prompt/modify-web.md)
 指令：帮我修改当前页面的样式，去掉广告
 https://youtu.be/twI6apRKHsk
 
-
 https://github.com/user-attachments/assets/aedbe98d-e90c-4a58-a4a5-d888f7293d8e
 
 ### ai自动帮你捕获网络请求
 
 指令：我想知道小红书的搜索接口是哪个，响应体结构是什么样的
 https://youtu.be/1hHKr7XKqnQ
-
 
 https://github.com/user-attachments/assets/063f44ae-1754-46b6-b141-5988c86e4d96
 
@@ -233,14 +156,12 @@ https://github.com/user-attachments/assets/063f44ae-1754-46b6-b141-5988c86e4d96
 指令：分析一下我近一个月的浏览记录
 https://youtu.be/jf2UZfrR2Vk
 
-
 https://github.com/user-attachments/assets/e7a35118-e50e-4b1c-a790-0878aa2505ab
 
 ### 网页对话
 
 指令：翻译并总结当前网页
 https://youtu.be/FlJKS9UQyC8
-
 
 https://github.com/user-attachments/assets/08aa86aa-7706-4df2-b400-576e2c7fcc7f
 
@@ -263,14 +184,12 @@ https://github.com/user-attachments/assets/25657076-b84b-4459-a72f-90f896f06364
 指令：将当前页面添加到书签中，放到合适的文件夹
 https://youtu.be/R_83arKmFTo
 
-
 https://github.com/user-attachments/assets/73c1ea26-65fb-4b5e-b537-e32fa9bcfa52
 
 ### 自动关闭网页
 
 指令：关闭所有shadcn相关的网页
 https://youtu.be/2wzUT6eNVg4
-
 
 https://github.com/user-attachments/assets/ff160f48-58e0-4c76-a6b0-c4e1f91370c8
 
@@ -309,6 +228,3 @@ https://github.com/user-attachments/assets/ff160f48-58e0-4c76-a6b0-c4e1f91370c8
 拉群的目的是让踩过坑的大佬们互相帮忙解答问题，因本人平时要忙着搬砖，不一定能及时解答
 
 ![IMG_6296](https://github.com/user-attachments/assets/ecd2e084-24d2-4038-b75f-3ab020b55594)
-
-
-
