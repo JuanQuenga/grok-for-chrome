@@ -49,8 +49,13 @@ export default defineConfig({
     side_panel: {
       default_path: 'sidepanel/index.html',
     },
-    action: {
-      default_popup: 'popup/index.html',
+    // Remove action default popup so action clicks can open the sidepanel by behavior
+    // Keep action but do not provide a default popup so clicks won't open the old popup
+    action: {},
+    // Options UI so users can configure keyboard shortcut mappings inside the extension
+    options_ui: {
+      page: 'options/index.html',
+      open_in_tab: true,
     },
     web_accessible_resources: [
       {
@@ -70,6 +75,8 @@ export default defineConfig({
     content_security_policy: {
       extension_pages: "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';",
     },
+    // Pre-declare a few generic tool shortcut slots users can map to different tools via the
+    // Options page and then assign key combinations in chrome://extensions/shortcuts.
     commands: {
       open_sidepanel: {
         suggested_key: {
@@ -84,6 +91,21 @@ export default defineConfig({
           mac: 'Command+G',
         },
         description: '__MSG_openPopupCommand__',
+      },
+      tool_shortcut_1: {
+        description: 'Tool shortcut slot 1',
+      },
+      tool_shortcut_2: {
+        description: 'Tool shortcut slot 2',
+      },
+      tool_shortcut_3: {
+        description: 'Tool shortcut slot 3',
+      },
+      tool_shortcut_4: {
+        description: 'Tool shortcut slot 4',
+      },
+      tool_shortcut_5: {
+        description: 'Tool shortcut slot 5',
       },
     },
   },

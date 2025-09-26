@@ -514,5 +514,9 @@
   "openSidepanelCommand": {
     "message": "Open Grok sidepanel",
     "description": "Keyboard shortcut to open the extension sidepanel"
+  },
+  "optionsPage": {
+    "message": "Extension options",
+    "description": "Options page title"
   }
 }

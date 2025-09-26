@@ -21,29 +21,45 @@ export default defineBackground(() => {
     chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
   });
 
-  // Handle keyboard shortcuts
-  chrome.commands.onCommand.addListener((command, tab) => {
-    if (command === 'open_sidepanel') {
-      // Open sidepanel
-      if (tab?.id) {
-        chrome.sidePanel.open({ tabId: tab.id });
+  // Handle keyboard shortcuts and tool shortcut slots
+  chrome.commands.onCommand.addListener(async (command, tab) => {
+    const openSidepanelForTab = async (t?: chrome.tabs.Tab) => {
+      if (t?.id) {
+        await chrome.sidePanel.open({ tabId: t.id });
       } else {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-          if (tabs[0]?.id) {
-            chrome.sidePanel.open({ tabId: tabs[0].id });
-          }
-        });
+        const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (tabs[0]?.id) await chrome.sidePanel.open({ tabId: tabs[0].id });
       }
-    } else if (command === 'open_popup') {
-      // Open popup - try to use chrome.action.openPopup() if available
+    };
+
+    if (command === 'open_sidepanel') {
+      await openSidepanelForTab(tab as any);
+      return;
+    }
+
+    if (command === 'open_popup') {
       if (chrome.action && chrome.action.openPopup) {
-        chrome.action.openPopup().catch((error) => {
-          console.warn('Failed to open popup programmatically:', error);
-        });
-      } else {
-        // Fallback: try to simulate opening by creating a temporary window
-        // This is a workaround since there's no direct API
-        console.log('Popup opening requested - chrome.action.openPopup not available');
+        await chrome.action
+          .openPopup()
+          .catch((error) => console.warn('Failed to open popup programmatically:', error));
+      }
+      return;
+    }
+
+    // Tool shortcut slots: look up mapping in storage and execute mapped tool
+    if (command.startsWith('tool_shortcut_')) {
+      try {
+        const mappingKey = `shortcut_mapping_${command}`;
+        const result = await chrome.storage.local.get([mappingKey]);
+        const mapped = result?.[mappingKey];
+        if (mapped && mapped.toolName) {
+          // Execute the mapped tool via existing handleCallTool helper
+          handleCallTool({ name: mapped.toolName, args: mapped.args || {} });
+        } else {
+          console.log(`No tool mapped for ${command}`);
+        }
+      } catch (error) {
+        console.warn('Failed to handle tool shortcut command:', error);
       }
     }
   });
